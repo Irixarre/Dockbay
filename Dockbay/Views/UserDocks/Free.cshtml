@@ -1,0 +1,59 @@
+﻿@model Dockbay.Models.UserDock
+@{
+    ViewData["Title"] = "Free";
+}
+<h1>Details</h1>
+<div>
+    <h4>Dock</h4>
+    <hr />
+    <dl class="row">
+
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Dock.Town)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Dock.Town)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Dock.History)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Dock.History)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Dock.Coordinates)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Dock.Coordinates)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Dock.Image)
+        </dt>
+        @*<dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Image)
+        </dd>*@
+        @*<dt class="col-sm-2">
+            <img class="card-img-top" src="@Model.Image" alt="Card image" sizes="200px">
+        </dt>*@
+        <dd class="col-sm-10">
+            <img class="card-img-top" src="@Model.Dock.Image" alt="Card image" sizes="200px">
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Dock.Rented)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Dock.Rented)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Dock.Disponible)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Dock.Disponible)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a>
+    <a asp-controller="UserDocks" asp-action="ConfirmFree" asp-route-id="@Model.Id" class="btn btn-primary">Free</a>|
+    <a asp-action="Index">Back to List</a>
+</div>

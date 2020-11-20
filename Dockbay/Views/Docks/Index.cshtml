@@ -1,0 +1,50 @@
+﻿@model IEnumerable<Dockbay.Models.Dock>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+<form asp-controller="Docks" asp-action="Index">
+    <input type="text" placeholder="Buscar" name="Town" />
+    <select name="disponible">
+        <option value="">All</option>
+        @foreach (string disponible in (List<string>)ViewData["disponibles"])
+        {
+            <option value="@disponible">@disponible</option>
+        }
+    </select>
+    <input type="submit" value="Buscar" />
+</form>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<div class="card-columns">
+    @foreach (var item in Model)
+    {
+        <div class="card" style="width:250px">
+            <img class="card-img-top" src="@item.Image" alt="Card image" sizes="200px">
+            <div class="card-body">
+                <h4 class="card-title">@item.Coordinates</h4>
+                <p class="card-text">@item.History</p>
+                @*<p class="card-text">@item.Image</p>*@
+                @if (item.Rented)
+                {
+                    <p>Occuped</p>
+                }
+                else
+                {
+                    <p>Disponible</p>
+                    <a asp-controller="Docks" asp-action="Rent" asp-route-id="@item.Id" class="btn btn-primary">Rent</a>
+                }
+                
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> 
+                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> 
+                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </div>
+        </div>
+    }
+</div>>

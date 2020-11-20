@@ -1,0 +1,61 @@
+﻿@model Dockbay.Models.Dock
+@{
+    ViewData["Title"] = "Rent";
+
+}
+<h1>Details</h1>
+<div>
+    <h4>Dock</h4>
+    <hr />
+    <dl class="row">
+
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Town)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Town)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.History)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.History)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Coordinates)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Coordinates)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Image)
+        </dt>
+        @*<dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Image)
+        </dd>*@
+        @*<dt class="col-sm-2">
+            <img class="card-img-top" src="@Model.Image" alt="Card image" sizes="200px">
+        </dt>*@
+        <dd class="col-sm-10">
+            <img class="card-img-top" src="@Model.Image" alt="Card image" sizes="200px">
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Rented)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Rented)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Disponible)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Disponible)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a>
+    <a asp-controller="UserDocks" asp-action="RentConfirmed" asp-route-id="@Model.Id" class="btn btn-primary">Rent</a>|
+    <a asp-action="Index">Back to List</a>
+</div>
+   

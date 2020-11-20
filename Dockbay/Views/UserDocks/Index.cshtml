@@ -1,0 +1,65 @@
+﻿@model IEnumerable<Dockbay.Models.UserDock>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+<form asp-controller="UserDocks" asp-action="Index">
+    <select name="disponible">
+        <option value="">All</option>
+        <option value="Yes">Now</option>
+        <option value="No">Finished</option>
+    </select>
+    <input type="submit" value="Buscar" />
+</form>
+
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Entrance)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Exit)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Dock)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AppUser)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Entrance)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Exit)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Dock.Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AppUser.Id)
+                </td>
+                <td>
+                    <a asp-controller="UserDocks" asp-action="Free" asp-route-id="@item.Id" class="btn btn-primary">NoRent</a>|
+                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a>
+                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> 
+                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
